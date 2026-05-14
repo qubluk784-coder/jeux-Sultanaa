@@ -1,7 +1,7 @@
-import fortressImg from "@/assets/universe-fortress.png";
-import gardenImg from "@/assets/universe-garden.png";
-import academyImg from "@/assets/universe-academy.png";
-import webImg from "@/assets/universe-web.png";
+import fortressImg from "@/assets/stage-forteresse.png";
+import gardenImg from "@/assets/stage-jardin.png";
+import academyImg from "@/assets/stage-academie.png";
+import webImg from "@/assets/stage-vigie.png";
 
 export type Question =
   | { type: "tf"; prompt: string; correct: boolean; explanation: string }
