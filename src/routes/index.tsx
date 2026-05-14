@@ -1,11 +1,12 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { motion } from "framer-motion";
-import { ArrowRight, Map, Sparkles, Trophy } from "lucide-react";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowRight, Sparkles, Trophy, X, Compass, Play } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { SultanaAvatar } from "@/components/sultana/SultanaAvatar";
 import { loadProgress } from "@/lib/progress";
 import { universes } from "@/lib/universes";
+import { switchMusic } from "@/lib/audio";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -28,7 +29,14 @@ const stagePreview = universes.map((universe, index) => ({
 
 function Home() {
   const [xp, setXp] = useState(0);
-  useEffect(() => setXp(loadProgress().xp), []);
+  const [selectedUniverse, setSelectedUniverse] = useState<(typeof stagePreview)[0] | null>(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setXp(loadProgress().xp);
+    // Reset music to menu
+    void switchMusic(null);
+  }, []);
 
   return (
     <main className="relative min-h-[100dvh] overflow-hidden bg-[radial-gradient(circle_at_top_left,oklch(0.89_0.11_45),transparent_34%),radial-gradient(circle_at_top_right,oklch(0.82_0.12_210),transparent_32%),linear-gradient(180deg,oklch(0.98_0.03_70),oklch(0.95_0.04_25))] text-foreground">
@@ -123,13 +131,6 @@ function Home() {
                 Commencer le jeu
                 <ArrowRight className="h-5 w-5 transition group-hover:translate-x-1" />
               </Link>
-              <Link
-                to="/univers"
-                className="inline-flex h-14 items-center justify-center gap-3 rounded-2xl border border-white/70 bg-white/60 px-6 text-base font-black text-foreground shadow-soft backdrop-blur transition hover:-translate-y-1 hover:bg-white/80"
-              >
-                <Map className="h-5 w-5 text-primary" />
-                Voir les mondes
-              </Link>
             </motion.div>
           </div>
 
@@ -170,53 +171,154 @@ function Home() {
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.42 }}
-          className="pb-4"
+          className="pb-10"
         >
-          <div className="mb-3 flex items-end justify-between gap-3">
+          <div className="mb-6 flex items-end justify-between gap-3">
             <div>
               <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-primary">
                 Carte du voyage
               </p>
-              <h2 className="font-display text-2xl font-black">Choisis ton premier monde</h2>
+              <h2 className="font-display text-3xl font-black flex items-center gap-3">
+                <Compass className="h-8 w-8 text-primary" />
+                Découvre ton premier monde
+              </h2>
             </div>
-            <Link
-              to="/univers"
-              className="hidden text-sm font-extrabold text-primary transition hover:translate-x-1 sm:inline-flex"
-            >
-              Explorer
-            </Link>
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {stagePreview.map((stage, index) => (
-              <motion.div
+              <motion.button
                 key={stage.id}
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.48 + index * 0.08 }}
                 whileHover={{ y: -8, scale: 1.02 }}
-                className="group relative min-h-44 overflow-hidden rounded-2xl border border-white/70 bg-card shadow-soft"
+                whileTap={{ scale: 0.98 }}
+                onClick={() => setSelectedUniverse(stage)}
+                className="group relative text-left min-h-52 overflow-hidden rounded-[2rem] border-2 border-white/70 bg-card shadow-soft"
               >
                 <img
                   src={stage.image}
                   alt={stage.title}
                   className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/20 to-white/5" />
-                <div className="relative flex h-full min-h-44 flex-col justify-between p-4 text-white">
-                  <span className="w-fit rounded-full bg-white/25 px-3 py-1 text-xs font-black backdrop-blur">
-                    Monde {stage.step}
-                  </span>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                <div className="relative flex h-full flex-col justify-between p-5 text-white">
+                  <div className="flex items-center gap-2">
+                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-xs font-black backdrop-blur">
+                      {stage.step}
+                    </span>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-white/80">Monde</span>
+                  </div>
                   <div>
-                    <p className="text-sm font-bold text-white/85">{stage.badgeName}</p>
-                    <h3 className="font-display text-xl font-black leading-tight">{stage.title}</h3>
+                    <p className="text-xs font-bold text-primary mb-1">{stage.badgeName}</p>
+                    <h3 className="font-display text-2xl font-black leading-tight flex items-center gap-2">
+                      {stage.badge} {stage.title}
+                    </h3>
                   </div>
                 </div>
-              </motion.div>
+              </motion.button>
             ))}
           </div>
         </motion.section>
       </div>
+
+      {/* Presentation Modal */}
+      <AnimatePresence>
+        {selectedUniverse && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedUniverse(null)}
+              className="absolute inset-0 bg-background/80 backdrop-blur-md"
+            />
+            
+            <motion.div
+              layoutId={`modal-${selectedUniverse.id}`}
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="relative w-full max-w-2xl overflow-hidden rounded-[2.5rem] bg-card shadow-2xl border border-border/50"
+            >
+              <div className="absolute right-4 top-4 z-10">
+                <button
+                  onClick={() => setSelectedUniverse(null)}
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-black/10 text-foreground transition hover:bg-black/20"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+
+              <div className="flex flex-col md:flex-row">
+                <div className="h-48 w-full md:h-auto md:w-2/5 shrink-0 relative">
+                  <img
+                    src={selectedUniverse.image}
+                    alt=""
+                    className="h-full w-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent md:bg-gradient-to-r" />
+                  <div className="absolute inset-0 flex items-center justify-center text-7xl">
+                    <motion.span
+                      initial={{ scale: 0, rotate: -20 }}
+                      animate={{ scale: 1, rotate: 0 }}
+                      transition={{ type: "spring", delay: 0.2 }}
+                    >
+                      {selectedUniverse.badge}
+                    </motion.span>
+                  </div>
+                </div>
+
+                <div className="flex flex-col p-6 sm:p-8 md:p-10">
+                  <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 }}
+                  >
+                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-2">
+                      {selectedUniverse.subtitle}
+                    </p>
+                    <h2 className="font-display text-3xl sm:text-4xl font-black mb-6 leading-tight">
+                      {selectedUniverse.title}
+                    </h2>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="flex-1"
+                  >
+                    <div className="space-y-4">
+                      {selectedUniverse.description.split("\n\n").map((paragraph, i) => (
+                        <p key={i} className="text-base sm:text-lg leading-relaxed text-muted-foreground font-medium italic">
+                          {paragraph}
+                        </p>
+                      ))}
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                    className="mt-8"
+                  >
+                    <button
+                      onClick={() => navigate({ to: `/univers/${selectedUniverse.id}` })}
+                      className="group flex w-full items-center justify-center gap-3 rounded-2xl bg-gradient-warm py-4 text-lg font-black text-primary-foreground shadow-glow transition hover:-translate-y-1 active:scale-[0.98]"
+                    >
+                      <Play className="h-6 w-6 fill-current" />
+                      Commencer l'aventure
+                    </button>
+                  </motion.div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </main>
   );
 }

@@ -7,7 +7,7 @@ import { SpeechBubble } from "@/components/sultana/SpeechBubble";
 import { SultanaAvatar } from "@/components/sultana/SultanaAvatar";
 import { XpBurst } from "@/components/sultana/XpBurst";
 import { addXp, completeUniverse } from "@/lib/progress";
-import { playCorrectAnswerSound, playStageCompleteSound } from "@/lib/audio";
+import { playCorrectAnswerSound, playStageCompleteSound, playWrongAnswerSound, switchMusic } from "@/lib/audio";
 
 export const Route = createFileRoute("/univers/$id")({
   component: UniversePage,
@@ -34,6 +34,13 @@ function UniversePage() {
   const [score, setScore] = useState(0);
   const [done, setDone] = useState(false);
   const [burst, setBurst] = useState<{ show: boolean; amount: number }>({ show: false, amount: 0 });
+
+  // Switch music based on universe
+  useEffect(() => {
+    if (id) {
+      void switchMusic(id);
+    }
+  }, [id]);
 
   // reset state when navigating between universes
   useEffect(() => {
@@ -64,6 +71,8 @@ function UniversePage() {
     if (correct) {
       playCorrectAnswerSound();
       setScore((s) => s + 1);
+    } else {
+      playWrongAnswerSound();
     }
     setBurst({ show: true, amount });
     setTimeout(() => setBurst({ show: false, amount: 0 }), 1400);
@@ -80,6 +89,7 @@ function UniversePage() {
       setRevealed(false);
     }
   }
+
 
   return (
     <main className="min-h-[100dvh] relative overflow-hidden">

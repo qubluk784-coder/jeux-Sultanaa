@@ -11,6 +11,7 @@ export type Universe = {
   id: string;
   title: string;
   subtitle: string;
+  description: string;
   theme: string;
   badge: string;
   badgeName: string;
@@ -28,6 +29,7 @@ const universesRaw: Universe[] = [
     id: "forteresse",
     title: "Le Palais des Droits",
     subtitle: "Explore un palais plein de défis pour découvrir tes droits, la confiance en toi et le pouvoir de faire tes propres choix 👑",
+    description: "Entre dans un grand palais rempli de portes mystérieuses et de défis amusants 👑\n\nAvec Sultana, tu découvriras les droits des filles, l’importance de l’école, le respect et le pouvoir de dire oui… ou non ✨\n\nChaque bonne réponse débloquera un nouveau pouvoir de courage et de confiance ⚖️",
     theme: "Protection, égalité, droits civils et famille.",
     badge: "🏰",
     badgeName: "Gardienne de la Loi",
@@ -65,6 +67,7 @@ const universesRaw: Universe[] = [
     id: "jardin",
     title: "Mon Jardin Secret",
     subtitle: "Découvre un univers calme et magique pour apprendre à prendre soin de toi, comprendre tes émotions et respecter ton corps ✨",
+    description: "Découvre un jardin doux et magique rempli de fleurs, de lumière et de petits secrets ✨\n\nDans ce monde apaisant, tu apprendras à prendre soin de ton corps, comprendre tes émotions et écouter ce qui te rend heureuse ou mal à l’aise 💖\n\nChaque défi t’aidera à grandir avec confiance et à découvrir que ton corps t’appartient toujours 🌷",
     theme: "Respect du corps, santé, consentement et limites personnelles.",
     badge: "🌸",
     badgeName: "Fleur du Jardin",
@@ -102,6 +105,7 @@ const universesRaw: Universe[] = [
     id: "academie",
     title: "Ma Boîte à Rêves",
     subtitle: "Entre dans un monde inspirant où tous les rêves sont possibles et découvre les métiers, les études et tes futurs super-pouvoirs 🌟",
+    description: "Ouvre une boîte magique où tous les rêves deviennent possibles 🌟\n\nTu voyageras dans un univers rempli de métiers incroyables, d’études, d’inventions et d’aventures inspirantes 🚀\n\nChaque mission te montrera qu’une fille peut devenir tout ce qu’elle imagine 💡",
     theme: "Éducation, ambition, métiers et indépendance.",
     badge: "🚀",
     badgeName: "Pionnière de l'Avenir",
@@ -139,6 +143,7 @@ const universesRaw: Universe[] = [
     id: "vigie",
     title: "Le Club des Amies",
     subtitle: "Apprends à rester en sécurité, faire les bons choix et avancer avec confiance à l'école, dans la rue et sur Internet 💖",
+    description: "Bienvenue dans le Club des Amies, un endroit joyeux où les copines apprennent à s’aider et à rester en sécurité 💖\n\nTu découvriras comment faire les bons choix à l’école, dans la rue, avec les autres et sur Internet 🌐\n\nGrâce à Sultana et ses amies, tu apprendras à avancer avec confiance, intelligence et gentillesse ✨",
     theme: "Sécurité numérique et conscience d'Internet.",
     badge: "🛡️",
     badgeName: "Vigie du Web",
