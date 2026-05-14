@@ -7,6 +7,7 @@ import { SpeechBubble } from "@/components/sultana/SpeechBubble";
 import { SultanaAvatar } from "@/components/sultana/SultanaAvatar";
 import { XpBurst } from "@/components/sultana/XpBurst";
 import { addXp, completeUniverse } from "@/lib/progress";
+import { playCorrectAnswerSound, playStageCompleteSound } from "@/lib/audio";
 
 export const Route = createFileRoute("/univers/$id")({
   component: UniversePage,
@@ -60,7 +61,10 @@ function UniversePage() {
     const correct = q.type === "tf" ? (opt === "Vrai") === q.correct : opt === q.correct;
     const amount = correct ? 10 : 3;
     addXp(amount);
-    if (correct) setScore((s) => s + 1);
+    if (correct) {
+      playCorrectAnswerSound();
+      setScore((s) => s + 1);
+    }
     setBurst({ show: true, amount });
     setTimeout(() => setBurst({ show: false, amount: 0 }), 1400);
   }
@@ -68,6 +72,7 @@ function UniversePage() {
   function next() {
     if (step + 1 >= total) {
       completeUniverse(universe!.id);
+      playStageCompleteSound();
       setDone(true);
     } else {
       setStep((s) => s + 1);
