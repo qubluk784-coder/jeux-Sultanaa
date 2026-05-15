@@ -162,15 +162,14 @@ function Home() {
               <div className="absolute -right-4 top-4 z-30">
                 <div className="relative">
                   <motion.button
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    whileTap={{ scale: 0.95 }}
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.98 }}
                     onClick={() => setShowSultanaInfo(!showSultanaInfo)}
-                    className="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-glow-primary border-2 border-primary/30 text-primary transition-all hover:bg-primary hover:text-white group/btn"
+                    className="flex items-center gap-2 rounded-full bg-white px-5 py-2.5 shadow-glow-primary border-2 border-primary/20 text-primary transition-all hover:bg-primary hover:text-white group/btn"
                   >
-                    <div className="relative">
-                      <HelpCircle className="h-6 w-6" />
-                      <Sparkles className="absolute -top-2 -right-2 h-3 w-3 animate-sparkle" />
-                    </div>
+                    <HelpCircle className="h-4 w-4" />
+                    <span className="text-xs font-black uppercase tracking-wider">Qui est Sultana ?</span>
+                    <Sparkles className="h-3 w-3 animate-sparkle" />
                   </motion.button>
                   
                   <AnimatePresence>
