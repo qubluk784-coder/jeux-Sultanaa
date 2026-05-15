@@ -45,11 +45,11 @@
 :root {
   --radius: 1.5rem;
   
-  /* Default Theme (Rose & Gold Magical) */
-  --theme-primary: oklch(0.65 0.2 340); /* Deep Rose */
-  --theme-accent: oklch(0.8 0.2 80); /* Bright Gold */
-  --theme-bg: oklch(0.98 0.04 340); /* Very soft rose white */
-  --theme-text: oklch(0.25 0.08 340);
+  /* Default Theme (Soft Sky & Sand - As in original image) */
+  --theme-primary: oklch(0.75 0.12 30); /* Soft Terracotta */
+  --theme-accent: oklch(0.85 0.1 200); /* Soft Sky Blue */
+  --theme-bg: oklch(0.98 0.03 60); /* Warm Sand/Beige */
+  --theme-text: oklch(0.3 0.05 30);
 
   --background: var(--theme-bg);
   --foreground: var(--theme-text);
@@ -59,12 +59,12 @@
   --popover-foreground: var(--theme-text);
   --primary: var(--theme-primary);
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.95 0.06 340);
-  --secondary-foreground: oklch(0.3 0.1 340);
-  --muted: oklch(0.96 0.04 340);
-  --muted-foreground: oklch(0.5 0.05 340);
-  --accent: oklch(0.85 0.1 180);
-  --accent-foreground: oklch(0.2 0.1 180);
+  --secondary: oklch(0.94 0.04 60);
+  --secondary-foreground: oklch(0.35 0.06 30);
+  --muted: oklch(0.96 0.03 60);
+  --muted-foreground: oklch(0.5 0.04 35);
+  --accent: oklch(0.85 0.08 180);
+  --accent-foreground: oklch(0.3 0.05 200);
   --destructive: oklch(0.6 0.2 25);
   --destructive-foreground: oklch(1 0 0);
   --success: oklch(0.7 0.2 150);
@@ -193,13 +193,10 @@
   50% { background-position: 100% 50%; }
 }
 .bg-atmospheric {
-  background: linear-gradient(160deg,
-    var(--theme-bg) 0%,
-    color-mix(in oklab, var(--theme-accent) 15%, var(--theme-bg)) 35%,
-    color-mix(in oklab, var(--theme-primary) 10%, var(--theme-bg)) 70%,
-    var(--theme-bg) 100%);
-  background-size: 300% 300%;
-  animation: sky-shift 18s ease-in-out infinite;
+  background: radial-gradient(circle at 10% 10%, oklch(0.9 0.1 340) 0%, transparent 40%),
+              radial-gradient(circle at 90% 10%, oklch(0.9 0.08 200) 0%, transparent 40%),
+              radial-gradient(circle at 50% 50%, var(--theme-bg) 0%, var(--theme-bg) 100%);
+  background-size: 100% 100%;
 }
 
 /* Dashed path drawing */

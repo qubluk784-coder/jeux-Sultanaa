@@ -289,11 +289,11 @@ function Home() {
                     className="mt-8"
                   >
                     <button
-                      onClick={() => navigate({ to: `/univers/${selectedUniverse.id}` })}
+                      onClick={() => navigate({ to: "/univers" })}
                       className="group flex w-full items-center justify-center gap-3 rounded-2xl bg-gradient-warm py-4 text-lg font-black text-primary-foreground shadow-glow transition hover:-translate-y-1 active:scale-[0.98]"
                     >
-                      <Play className="h-6 w-6 fill-current" />
-                      Commencer l'aventure
+                      <Compass className="h-6 w-6" />
+                      Voir le parcours magique
                     </button>
                   </motion.div>
                 </div>
