@@ -4,6 +4,7 @@ import { ArrowRight, Sparkles, Trophy, X, Compass, Play } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { SultanaAvatar } from "@/components/sultana/SultanaAvatar";
+import { AtmosphericBackground } from "@/components/sultana/AtmosphericBackground";
 import { loadProgress } from "@/lib/progress";
 import { universes } from "@/lib/universes";
 import { switchMusic } from "@/lib/audio";
@@ -39,26 +40,8 @@ function Home() {
   }, []);
 
   return (
-    <main className="relative min-h-[100dvh] overflow-hidden bg-[radial-gradient(circle_at_top_left,oklch(0.89_0.11_45),transparent_34%),radial-gradient(circle_at_top_right,oklch(0.82_0.12_210),transparent_32%),linear-gradient(180deg,oklch(0.98_0.03_70),oklch(0.95_0.04_25))] text-foreground">
-      <div className="absolute inset-0 pattern-zellige opacity-40" />
-      <motion.div
-        aria-hidden="true"
-        className="absolute -left-24 top-24 h-56 w-56 rounded-full bg-accent/40 blur-3xl"
-        animate={{ x: [0, 28, 0], y: [0, 18, 0], scale: [1, 1.08, 1] }}
-        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        aria-hidden="true"
-        className="absolute -right-24 top-10 h-64 w-64 rounded-full bg-primary/30 blur-3xl"
-        animate={{ x: [0, -24, 0], y: [0, 24, 0], scale: [1, 1.12, 1] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        aria-hidden="true"
-        className="absolute bottom-10 left-1/2 h-52 w-52 -translate-x-1/2 rounded-full bg-gold/35 blur-3xl"
-        animate={{ y: [0, -22, 0], scale: [1, 1.1, 1] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-      />
+    <main className="relative min-h-[100dvh] overflow-hidden text-foreground">
+      <AtmosphericBackground />
 
       <div className="relative mx-auto flex min-h-[100dvh] w-full max-w-6xl flex-col px-5 py-6 sm:px-8 lg:px-10">
         <motion.header
@@ -105,7 +88,7 @@ function Home() {
               transition={{ delay: 0.12 }}
               className="font-display text-5xl font-black leading-[0.95] tracking-normal text-foreground sm:text-6xl lg:text-7xl"
             >
-              Deviens l'heroine de ton avenir
+              Ta Magique Aventure Commence Ici ✨
             </motion.h1>
 
             <motion.p

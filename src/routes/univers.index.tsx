@@ -4,6 +4,7 @@ import { universes } from "@/lib/universes";
 import { useEffect, useState } from "react";
 import { loadProgress } from "@/lib/progress";
 import { SultanaAvatar } from "@/components/sultana/SultanaAvatar";
+import { AtmosphericBackground } from "@/components/sultana/AtmosphericBackground";
 
 export const Route = createFileRoute("/univers/")({
   component: Universes,
@@ -25,38 +26,8 @@ function Universes() {
   const sultanaIndex = nextIndex < 0 ? universes.length : nextIndex;
 
   return (
-    <main className="min-h-[100dvh] bg-kid-sky relative overflow-hidden">
-      {/* Pink dreamy blobs */}
-      <div className="pointer-events-none absolute inset-0 -z-0">
-        <div className="absolute -top-24 -left-16 h-72 w-72 rounded-full bg-pink-300/55 blur-3xl animate-blob" />
-        <div className="absolute top-1/4 -right-20 h-80 w-80 rounded-full bg-rose-300/50 blur-3xl animate-blob" style={{ animationDelay: "-4s" }} />
-        <div className="absolute bottom-10 left-1/4 h-72 w-72 rounded-full bg-fuchsia-200/50 blur-3xl animate-blob" style={{ animationDelay: "-8s" }} />
-        <div className="absolute top-1/2 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-pink-200/60 blur-3xl animate-blob" style={{ animationDelay: "-2s" }} />
-      </div>
-
-      {/* Nature decor: flowers, leaves, butterflies */}
-      <div className="pointer-events-none absolute inset-0 -z-0">
-        {[
-          { l: "6%",  t: "6%",  d: "0s",   e: "🌸", s: "text-3xl" },
-          { l: "88%", t: "10%", d: "1.2s", e: "🦋", s: "text-2xl" },
-          { l: "82%", t: "30%", d: "0.6s", e: "🌷", s: "text-2xl" },
-          { l: "4%",  t: "38%", d: "1.4s", e: "🌿", s: "text-3xl" },
-          { l: "90%", t: "55%", d: "0.3s", e: "🌺", s: "text-3xl" },
-          { l: "8%",  t: "65%", d: "2s",   e: "🍀", s: "text-2xl" },
-          { l: "85%", t: "82%", d: "0.9s", e: "🦋", s: "text-2xl" },
-          { l: "10%", t: "92%", d: "1.6s", e: "🌸", s: "text-3xl" },
-          { l: "50%", t: "4%",  d: "0.4s", e: "☁️", s: "text-3xl" },
-          { l: "70%", t: "70%", d: "1.1s", e: "🌿", s: "text-2xl" },
-        ].map((p, i) => (
-          <span
-            key={i}
-            className={`absolute ${p.s} animate-bob opacity-90 select-none`}
-            style={{ left: p.l, top: p.t, animationDelay: p.d }}
-          >
-            {p.e}
-          </span>
-        ))}
-      </div>
+    <main className="min-h-[100dvh] relative overflow-hidden">
+      <AtmosphericBackground />
 
       <div className="relative mx-auto max-w-md px-5 pt-8 pb-20">
         <Link to="/" className="text-sm text-foreground/70 hover:text-foreground inline-flex items-center gap-1">

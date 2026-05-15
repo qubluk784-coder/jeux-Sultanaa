@@ -13,8 +13,8 @@ export function XpBurst({ show, amount }: { show: boolean; amount: number }) {
           className="pointer-events-none fixed left-1/2 top-1/2 -translate-x-1/2 z-50"
         >
           <div className="relative">
-            <div className="absolute inset-0 rounded-full bg-gold/40 blur-2xl" />
-            <div className="relative rounded-full bg-gradient-warm px-5 py-2.5 shadow-glow text-primary-foreground font-display font-bold text-lg flex items-center gap-1.5">
+            <div className="absolute inset-0 rounded-full bg-theme-primary/40 blur-2xl" />
+            <div className="relative rounded-full bg-gradient-theme shadow-glow text-primary-foreground font-display font-bold text-lg flex items-center gap-1.5">
               <span>✨</span>
               <span>+{amount} XP</span>
             </div>

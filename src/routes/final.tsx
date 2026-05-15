@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { loadProgress, resetProgress, type Progress } from "@/lib/progress";
 import { universes } from "@/lib/universes";
 import { SultanaAvatar } from "@/components/sultana/SultanaAvatar";
+import { AtmosphericBackground } from "@/components/sultana/AtmosphericBackground";
 
 export const Route = createFileRoute("/final")({
   component: Final,
@@ -22,8 +23,8 @@ function Final() {
   const all = p.completed.length === universes.length;
 
   return (
-    <main className="min-h-[100dvh] bg-gradient-sky pattern-zellige relative overflow-hidden">
-      <div className="absolute -top-32 left-1/2 -translate-x-1/2 h-72 w-72 rounded-full bg-gold/30 blur-3xl" />
+    <main className="min-h-[100dvh] relative overflow-hidden">
+      <AtmosphericBackground />
 
       <div className="relative mx-auto max-w-md px-5 pt-8 pb-12">
         <Link to="/univers" className="text-sm text-muted-foreground hover:text-foreground">← Univers</Link>

@@ -14,12 +14,12 @@ export function ProgressBar({ value, total }: { value: number; total: number }) 
           className="absolute inset-x-0 top-1/2 h-1 -translate-y-1/2 rounded-full"
           style={{
             backgroundImage:
-              "repeating-linear-gradient(90deg, color-mix(in oklab, var(--color-primary) 25%, transparent) 0 6px, transparent 6px 12px)",
+              "repeating-linear-gradient(90deg, color-mix(in oklab, var(--theme-primary) 25%, transparent) 0 6px, transparent 6px 12px)",
           }}
         />
         {/* filled gradient progress */}
         <motion.div
-          className="absolute left-0 top-1/2 h-1.5 -translate-y-1/2 rounded-full bg-gradient-warm shadow-glow"
+          className="absolute left-0 top-1/2 h-2 -translate-y-1/2 rounded-full bg-gradient-theme shadow-glow"
           initial={false}
           animate={{ width: `${pct}%` }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
