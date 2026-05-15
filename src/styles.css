@@ -77,31 +77,31 @@
 }
 
 .theme-jardin {
-  --theme-primary: oklch(0.7 0.2 340); /* Vibrant Rose */
-  --theme-accent: oklch(0.8 0.15 150); /* Bright Mint */
-  --theme-bg: oklch(0.97 0.05 340); /* Soft pinkish white */
-  --theme-text: oklch(0.3 0.1 340);
+  --theme-primary: oklch(0.65 0.25 160); /* Emerald Green */
+  --theme-accent: oklch(0.7 0.2 340); /* Bright Pink */
+  --theme-bg: oklch(0.96 0.06 160); /* Very soft green white */
+  --theme-text: oklch(0.25 0.1 160);
 }
 
 .theme-forteresse {
-  --theme-primary: oklch(0.5 0.2 260); /* Deep Royal Blue */
-  --theme-accent: oklch(0.8 0.18 80); /* Bright Gold */
-  --theme-bg: oklch(0.95 0.06 260); /* Very light blue */
-  --theme-text: oklch(0.2 0.1 260);
+  --theme-primary: oklch(0.45 0.18 260); /* Midnight Blue */
+  --theme-accent: oklch(0.8 0.2 85); /* Bright Yellow Gold */
+  --theme-bg: oklch(0.94 0.05 260); /* Light blue white */
+  --theme-text: oklch(0.15 0.1 260);
 }
 
 .theme-academie {
-  --theme-primary: oklch(0.6 0.22 210); /* Vivid Sky Blue */
-  --theme-accent: oklch(0.7 0.2 190); /* Teal */
-  --theme-bg: oklch(0.96 0.05 210);
-  --theme-text: oklch(0.25 0.1 210);
+  --theme-primary: oklch(0.6 0.22 215); /* Sky Blue */
+  --theme-accent: oklch(0.5 0.15 280); /* Deep Indigo */
+  --theme-bg: oklch(0.96 0.05 215); /* Soft sky blue white */
+  --theme-text: oklch(0.2 0.1 215);
 }
 
 .theme-vigie {
-  --theme-primary: oklch(0.55 0.25 300); /* Vivid Purple */
-  --theme-accent: oklch(0.65 0.3 340); /* Hot Pink */
-  --theme-bg: oklch(0.96 0.06 300);
-  --theme-text: oklch(0.25 0.1 300);
+  --theme-primary: oklch(0.55 0.25 310); /* Cyber Purple */
+  --theme-accent: oklch(0.65 0.3 350); /* Electric Pink */
+  --theme-bg: oklch(0.96 0.06 310); /* Soft purple white */
+  --theme-text: oklch(0.2 0.1 310);
 }
 
 .dark {

@@ -88,7 +88,7 @@ function Home() {
               transition={{ delay: 0.12 }}
               className="font-display text-5xl font-black leading-[0.95] tracking-normal text-foreground sm:text-6xl lg:text-7xl"
             >
-              Ta Magique Aventure Commence Ici ✨
+              Deviens l'heroine de ton avenir
             </motion.h1>
 
             <motion.p
