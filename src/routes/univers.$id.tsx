@@ -103,9 +103,47 @@ function UniversePage() {
     <main className={`min-h-[100dvh] relative overflow-hidden bg-background transition-colors duration-700 ${themeClass}`}>
       <AtmosphericBackground />
 
+      {/* Floating decorative sparkles ✨ */}
+      <div className="pointer-events-none absolute inset-0 z-0">
+        {[...Array(8)].map((_, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0 }}
+            animate={{ 
+              opacity: [0.1, 0.4, 0.1],
+              y: [0, -40, 0],
+              x: [0, 20, 0],
+              scale: [1, 1.3, 1]
+            }}
+            transition={{
+              duration: 3 + i,
+              repeat: Infinity,
+              delay: i * 0.5
+            }}
+            className="absolute text-primary/30"
+            style={{
+              top: `${10 + i * 12}%`,
+              left: `${5 + (i % 4) * 25}%`,
+              fontSize: `${10 + i * 5}px`
+            }}
+          >
+            ✨
+          </motion.div>
+        ))}
+      </div>
+
       <XpBurst show={burst.show} amount={burst.amount} />
 
-      <div className="mx-auto w-full max-w-[420px] px-4 sm:px-5 pt-5 pb-10 min-h-[100dvh] flex flex-col">
+      {/* Persistent Decorative Sultana */}
+      <motion.div 
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        className="fixed -bottom-6 -right-10 pointer-events-none z-0 opacity-40 sm:opacity-60"
+      >
+        <SultanaAvatar size={220} float={true} />
+      </motion.div>
+
+      <div className="relative z-10 mx-auto w-full max-w-[420px] px-4 sm:px-5 pt-5 pb-10 min-h-[100dvh] flex flex-col">
         {/* Navigation & Progress - Hidden during question phase if strictly minimal */}
         <AnimatePresence>
           {!revealed && (
