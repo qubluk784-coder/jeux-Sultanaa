@@ -93,10 +93,10 @@ function UniversePage() {
 
 
   const themeClass = {
-    "jardin-secret": "theme-jardin",
-    "forteresse-droits": "theme-forteresse",
-    "academie-reves": "theme-academie",
-    "vigie-securite": "theme-vigie",
+    "jardin": "theme-jardin",
+    "forteresse": "theme-forteresse",
+    "academie": "theme-academie",
+    "vigie": "theme-vigie",
   }[universe.id] || "";
 
   return (
