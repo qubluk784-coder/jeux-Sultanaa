@@ -9,6 +9,7 @@ import { XpBurst } from "@/components/sultana/XpBurst";
 import { AtmosphericBackground } from "@/components/sultana/AtmosphericBackground";
 import { addXp, completeUniverse } from "@/lib/progress";
 import { playCorrectAnswerSound, playStageCompleteSound, playWrongAnswerSound, switchMusic } from "@/lib/audio";
+import logo from "@/assets/logo.png";
 
 export const Route = createFileRoute("/univers/$id")({
   component: UniversePage,
@@ -162,11 +163,16 @@ function UniversePage() {
               exit={{ opacity: 0, y: -10 }}
               className="mb-4"
             >
-              <div className="flex items-center justify-between mb-2">
-                <Link to="/univers" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors">
-                  ← Retour
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex flex-col gap-2">
+                  <Link to="/univers" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors">
+                    ← Univers
+                  </Link>
+                  <span className="text-2xl">{universe.badge}</span>
+                </div>
+                <Link to="/" className="transition-all hover:scale-110 active:scale-95">
+                  <img src={logo} alt="Sultana" className="h-14 w-14 object-contain rounded-full bg-white shadow-md border border-white" />
                 </Link>
-                <span className="text-xl">{universe.badge}</span>
               </div>
               <ProgressBar value={step + 1} total={total} />
             </motion.div>

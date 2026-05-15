@@ -31,11 +31,13 @@ function Universes() {
       <AtmosphericBackground />
 
       <div className="relative mx-auto max-w-md px-5 pt-8 pb-20">
-        <div className="flex items-center justify-between">
-          <Link to="/" className="text-sm text-foreground/70 hover:text-foreground inline-flex items-center gap-1">
+        <div className="flex items-center justify-between gap-4">
+          <Link to="/" className="text-sm font-black uppercase tracking-widest text-foreground/50 hover:text-primary transition-colors flex items-center gap-1">
             ← Retour
           </Link>
-          <img src={logo} alt="Sultana" className="h-10 w-10 object-contain opacity-80" />
+          <Link to="/" className="transition-all hover:scale-110 active:scale-95">
+            <img src={logo} alt="Sultana" className="h-16 w-16 object-contain rounded-full bg-white shadow-glow border-2 border-white/50" />
+          </Link>
         </div>
 
         <motion.div
