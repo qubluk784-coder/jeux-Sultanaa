@@ -40,8 +40,10 @@ function Home() {
   }, []);
 
   return (
-    <main className="relative min-h-[100dvh] overflow-hidden text-foreground">
-      <AtmosphericBackground />
+    <main className="relative min-h-[100dvh] overflow-hidden text-foreground bg-[#7dd3fc]">
+      {/* Decorative sand bottom */}
+      <div className="absolute inset-x-0 bottom-0 h-[55%] bg-background -z-10" 
+           style={{ borderRadius: '100% 100% 0 0 / 20% 20% 0 0' }} />
 
       <div className="relative mx-auto flex min-h-[100dvh] w-full max-w-6xl flex-col px-5 py-6 sm:px-8 lg:px-10">
         <motion.header
