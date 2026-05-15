@@ -193,9 +193,11 @@
   50% { background-position: 100% 50%; }
 }
 .bg-atmospheric {
-  background: radial-gradient(circle at 10% 10%, oklch(0.9 0.1 340) 0%, transparent 40%),
-              radial-gradient(circle at 90% 10%, var(--theme-accent) 0%, transparent 50%),
-              radial-gradient(circle at 50% 50%, var(--theme-bg) 0%, var(--theme-bg) 100%);
+  background: linear-gradient(165deg, 
+    var(--theme-accent) 0%, 
+    var(--theme-accent) 40%, 
+    var(--theme-bg) 75%, 
+    var(--theme-bg) 100%);
   background-size: 100% 100%;
 }
 
