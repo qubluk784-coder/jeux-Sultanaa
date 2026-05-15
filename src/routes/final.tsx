@@ -5,6 +5,7 @@ import { loadProgress, resetProgress, type Progress } from "@/lib/progress";
 import { universes } from "@/lib/universes";
 import { SultanaAvatar } from "@/components/sultana/SultanaAvatar";
 import { AtmosphericBackground } from "@/components/sultana/AtmosphericBackground";
+import logo from "@/assets/logo.png";
 
 export const Route = createFileRoute("/final")({
   component: Final,
@@ -133,6 +134,10 @@ function Final() {
           >
             Tout recommencer
           </button>
+        </div>
+        <div className="mt-8 flex flex-col items-center gap-2 opacity-60">
+          <img src={logo} alt="" className="h-10 w-10 object-contain grayscale brightness-50" />
+          <p className="text-[10px] font-bold uppercase tracking-[0.2em]">Sultana - Le Parcours des Droits</p>
         </div>
       </div>
     </main>

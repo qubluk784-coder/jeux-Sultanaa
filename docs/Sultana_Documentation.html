@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sultana - Brand Book & Documentation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;700&display=swap');
+
+        :root {
+            --primary: #6D28D9;
+            --accent: #F59E0B;
+            --text: #1F2937;
+            --light-text: #6B7280;
+            --bg: #FFFFFF;
+            --section-bg: #F9FAFB;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f0f2f5;
+        }
+
+        .paper {
+            background: var(--bg);
+            padding: 60px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-radius: 8px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 2rem;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin: 0;
+            letter-spacing: -1px;
+        }
+
+        .brand-tagline {
+            font-size: 1.4rem;
+            color: var(--light-text);
+            font-weight: 400;
+        }
+
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-top: 4rem;
+            border-bottom: 1px solid #E5E7EB;
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            color: var(--text);
+            margin-top: 2.5rem;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            background: var(--section-bg);
+            padding: 40px;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        .logo-main {
+            max-width: 250px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 2rem 0;
+        }
+
+        .color-card {
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid #E5E7EB;
+        }
+
+        .color-swatch {
+            height: 100px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .font-demo {
+            padding: 30px;
+            background: var(--section-bg);
+            border-radius: 12px;
+        }
+
+        .outfit { font-family: 'Outfit', sans-serif; }
+        .inter { font-family: 'Inter', sans-serif; }
+
+        .page-break { page-break-before: always; }
+
+        .no-print-header {
+            position: sticky;
+            top: 0;
+            background: rgba(255,255,255,0.9);
+            padding: 10px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+            z-index: 100;
+            border-radius: 0 0 12px 12px;
+            margin-bottom: 20px;
+            border: 1px solid #eee;
+        }
+
+        .btn-print {
+            background: var(--primary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: transform 0.2s;
+        }
+
+        .btn-print:hover { transform: scale(1.05); }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .paper { box-shadow: none; padding: 0; }
+            .no-print-header { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="no-print-header">
+        <p>✨ <strong>Mode Book Branding Activé</strong> — Prêt pour l'exportation PDF.</p>
+        <a href="javascript:window.print()" class="btn-print">Imprimer / Enregistrer en PDF</a>
+    </div>
+
+    <div class="paper">
+        <header>
+            <h1>SULTANA</h1>
+            <p class="brand-tagline">Brand Book & Spécifications Techniques</p>
+        </header>
+
+        <section id="essence">
+            <h2>1. Essence de la Marque</h2>
+            <p>Sultana est une plateforme d'empuissancement dédiée aux jeunes filles marocaines. Elle allie la sagesse ancestrale à la modernité technologique pour offrir un parcours éducatif magique.</p>
+            <ul>
+                <li><strong>Vision</strong> : Un monde où chaque fille connaît et exerce ses droits.</li>
+                <li><strong>Mission</strong> : Éduquer par le jeu et le récit interactif.</li>
+                <li><strong>Valeurs</strong> : Courage, Savoir, Élégance, Innovation.</li>
+            </ul>
+        </section>
+
+        <section id="logo">
+            <h2>2. Identité Visuelle : Le Logo "S"</h2>
+            <p>Le logo "S" est le symbole central de la marque. Il représente Sultana, le Savoir et le Succès.</p>
+            <div class="logo-section">
+                <img src="logo_s.png" alt="Logo S" class="logo-main">
+                <div style="max-width: 300px;">
+                    <p><strong>Concept :</strong> Une lettre "S" fluide intégrant une étoile/étincelle pour symboliser l'illumination par la connaissance.</p>
+                    <p><strong>Usage :</strong> Utiliser sur fond blanc ou clair pour une lisibilité maximale.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="page-break"></div>
+
+        <section id="colors">
+            <h2>3. Palette Chromatique</h2>
+            <h3>Couleurs Primaires</h3>
+            <div class="color-grid">
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #6D28D9;"></div>
+                    <p><strong>Sultana Purple</strong><br><code>#6D28D9</code></p>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #F59E0B;"></div>
+                    <p><strong>Royal Gold</strong><br><code>#F59E0B</code></p>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #06B6D4;"></div>
+                    <p><strong>Crystal Turquoise</strong><br><code>#06B6D4</code></p>
+                </div>
+            </div>
+
+            <h3>Thèmes des Univers</h3>
+            <div class="color-grid">
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #312E81;"></div>
+                    <p><strong>Éducation</strong><br><code>#312E81</code></p>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #059669;"></div>
+                    <p><strong>Santé</strong><br><code>#059669</code></p>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #DB2777;"></div>
+                    <p><strong>Protection</strong><br><code>#DB2777</code></p>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #D97706;"></div>
+                    <p><strong>Futur</strong><br><code>#D97706</code></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="typography">
+            <h2>4. Typographie</h2>
+            <div class="font-demo">
+                <h1 class="outfit" style="font-size: 2.5rem; text-align: left; border: none; padding: 0; color: var(--text);">Outfit - Titres</h1>
+                <p class="outfit">Utilisée pour les titres et les éléments de navigation. Elle apporte une touche de modernité et de caractère.</p>
+                <br>
+                <p class="inter" style="font-weight: 600; font-size: 1.2rem;">Inter - Corps de texte</p>
+                <p class="inter">Utilisée pour tous les textes narratifs et les dialogues. Conçue pour une lisibilité exceptionnelle sur smartphone.</p>
+            </div>
+        </section>
+
+        <div class="page-break"></div>
+
+        <section id="ui-principles">
+            <h2>5. Principes d'Interface (UI)</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+                <div>
+                    <h3>Boutons & Actions</h3>
+                    <p>Les boutons doivent avoir un <strong>border-radius de 12px</strong>. Les actions primaires utilisent des gradients allant du Purple au Turquoise.</p>
+                </div>
+                <div>
+                    <h3>Composants "Magiques"</h3>
+                    <p>Utilisation du <strong>Glassmorphism</strong> (flou d'arrière-plan) pour toutes les modales et cartes d'information, créant une sensation de profondeur.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="technical">
+            <h2>6. Spécifications Techniques</h2>
+            <p>Le projet repose sur une architecture robuste et moderne :</p>
+            <ul>
+                <li><strong>Framework</strong> : React 19 + Vite</li>
+                <li><strong>Styles</strong> : Tailwind CSS 4</li>
+                <li><strong>Navigation</strong> : TanStack Router</li>
+                <li><strong>Animations</strong> : Framer Motion (Transitions de 0.3s standard)</li>
+            </ul>
+        </section>
+    </div>
+
+</body>
+</html>

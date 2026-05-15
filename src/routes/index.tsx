@@ -8,6 +8,7 @@ import { AtmosphericBackground } from "@/components/sultana/AtmosphericBackgroun
 import { loadProgress } from "@/lib/progress";
 import { universes } from "@/lib/universes";
 import { switchMusic } from "@/lib/audio";
+import logo from "@/assets/logo.png";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -61,9 +62,11 @@ function Home() {
           className="flex items-center justify-between"
         >
           <div className="flex items-center gap-2 rounded-full border border-white/60 bg-white/55 px-3 py-2 shadow-soft backdrop-blur">
-            <span className="grid h-9 w-9 place-items-center rounded-full bg-gradient-warm text-sm font-black text-primary-foreground">
-              S
-            </span>
+            <img 
+              src={logo} 
+              alt="Logo Sultana" 
+              className="h-10 w-10 object-contain rounded-full bg-gradient-warm p-0.5" 
+            />
             <div className="leading-tight">
               <p className="font-display text-lg font-bold">Sultana</p>
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">

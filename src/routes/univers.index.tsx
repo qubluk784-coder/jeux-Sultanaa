@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { loadProgress } from "@/lib/progress";
 import { SultanaAvatar } from "@/components/sultana/SultanaAvatar";
 import { AtmosphericBackground } from "@/components/sultana/AtmosphericBackground";
+import logo from "@/assets/logo.png";
 
 export const Route = createFileRoute("/univers/")({
   component: Universes,
@@ -30,9 +31,12 @@ function Universes() {
       <AtmosphericBackground />
 
       <div className="relative mx-auto max-w-md px-5 pt-8 pb-20">
-        <Link to="/" className="text-sm text-foreground/70 hover:text-foreground inline-flex items-center gap-1">
-          ← Retour
-        </Link>
+        <div className="flex items-center justify-between">
+          <Link to="/" className="text-sm text-foreground/70 hover:text-foreground inline-flex items-center gap-1">
+            ← Retour
+          </Link>
+          <img src={logo} alt="Sultana" className="h-10 w-10 object-contain opacity-80" />
+        </div>
 
         <motion.div
           initial={{ opacity: 0, y: 10 }}
