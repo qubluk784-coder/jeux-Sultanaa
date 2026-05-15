@@ -97,13 +97,21 @@ function Universes() {
               const done = completed.includes(u.id);
               const alignRight = i % 2 === 1;
               const isCurrent = i === sultanaIndex;
+              
+              const themeClass = {
+                "jardin": "theme-jardin",
+                "forteresse": "theme-forteresse",
+                "academie": "theme-academie",
+                "vigie": "theme-vigie",
+              }[u.id] || "";
+
               return (
                 <motion.li
                   key={u.id}
                   initial={{ opacity: 0, scale: 0.7, y: 20 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   transition={{ delay: 0.25 + i * 0.2, type: "spring", stiffness: 140, damping: 14 }}
-                  className={`relative flex ${alignRight ? "justify-end" : "justify-start"}`}
+                  className={`relative flex ${alignRight ? "justify-end" : "justify-start"} ${themeClass}`}
                 >
                   {/* Sultana stands next to the current stage */}
                   {isCurrent && (
@@ -114,7 +122,7 @@ function Universes() {
                       className={`absolute -top-6 ${alignRight ? "left-2" : "right-2"} z-20 pointer-events-none`}
                     >
                       <div className="relative">
-                        <span className="absolute -top-7 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-bold text-primary shadow-soft border border-pink-200">
+                        <span className="absolute -top-7 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-bold text-primary shadow-soft border border-primary/20">
                           C'est par ici !
                         </span>
                         <SultanaAvatar size={70} />
@@ -128,7 +136,7 @@ function Universes() {
                     className="group relative block w-[78%]"
                   >
                     {/* Stage number bubble */}
-                    <span className="absolute -top-3 -left-3 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-gradient-warm text-sm font-black text-primary-foreground shadow-glow border-2 border-white">
+                    <span className="absolute -top-3 -left-3 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-primary text-sm font-black text-primary-foreground shadow-glow border-2 border-white">
                       {i + 1}
                     </span>
                     {done && (
@@ -138,7 +146,16 @@ function Universes() {
                     )}
 
                     <div className="animate-bob" style={{ animationDelay: `${i * 0.4}s` }}>
-                      <div className="overflow-hidden rounded-3xl border-[3px] border-white/90 bg-card/95 backdrop-blur shadow-glow group-hover:shadow-glow transition-all group-active:scale-[0.97] ring-2 ring-pink-200/60">
+                      <div 
+                        className="overflow-hidden rounded-3xl border-[3px] border-white/90 bg-card backdrop-blur shadow-glow group-hover:shadow-glow transition-all group-active:scale-[0.97] ring-2 ring-primary/20"
+                        style={{
+                          backgroundImage: `
+                            radial-gradient(circle at 0% 0%, var(--theme-accent) 0%, transparent 60%),
+                            radial-gradient(circle at 100% 100%, var(--theme-primary) 0%, transparent 60%),
+                            radial-gradient(circle at 50% 50%, var(--theme-bg) 0%, transparent 100%)
+                          `
+                        }}
+                      >
                         <div className="relative h-28 overflow-hidden">
                           <img
                             src={u.image}
@@ -150,11 +167,11 @@ function Universes() {
                           <span className="absolute bottom-2 right-2 text-3xl drop-shadow-lg">{u.badge}</span>
                         </div>
                         <div className="px-3.5 py-2.5">
-                          <p className="text-[10px] font-bold uppercase tracking-wider text-primary/80">
+                          <p className="text-[10px] font-bold uppercase tracking-wider text-primary">
                             Étape {i + 1}
                           </p>
                           <h2 className="font-display text-base font-bold leading-tight">{u.title}</h2>
-                          <p className="mt-0.5 text-xs text-muted-foreground italic line-clamp-1">{u.subtitle}</p>
+                          <p className="mt-0.5 text-xs text-foreground/70 italic line-clamp-1">{u.subtitle}</p>
                         </div>
                       </div>
                     </div>
