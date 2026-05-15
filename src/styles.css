@@ -81,6 +81,8 @@
   --theme-accent: oklch(0.7 0.2 340); /* Bright Pink */
   --theme-bg: oklch(0.96 0.06 160); /* Very soft green white */
   --theme-text: oklch(0.25 0.1 160);
+  --background: var(--theme-bg);
+  --primary: var(--theme-primary);
 }
 
 .theme-forteresse {
@@ -88,6 +90,8 @@
   --theme-accent: oklch(0.8 0.2 85); /* Bright Yellow Gold */
   --theme-bg: oklch(0.94 0.05 260); /* Light blue white */
   --theme-text: oklch(0.15 0.1 260);
+  --background: var(--theme-bg);
+  --primary: var(--theme-primary);
 }
 
 .theme-academie {
@@ -95,6 +99,8 @@
   --theme-accent: oklch(0.5 0.15 280); /* Deep Indigo */
   --theme-bg: oklch(0.96 0.05 215); /* Soft sky blue white */
   --theme-text: oklch(0.2 0.1 215);
+  --background: var(--theme-bg);
+  --primary: var(--theme-primary);
 }
 
 .theme-vigie {
@@ -102,6 +108,8 @@
   --theme-accent: oklch(0.65 0.3 350); /* Electric Pink */
   --theme-bg: oklch(0.96 0.06 310); /* Soft purple white */
   --theme-text: oklch(0.2 0.1 310);
+  --background: var(--theme-bg);
+  --primary: var(--theme-primary);
 }
 
 .dark {
