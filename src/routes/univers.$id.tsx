@@ -100,7 +100,16 @@ function UniversePage() {
   }[universe.id] || "";
 
   return (
-    <main className={`min-h-[100dvh] relative overflow-hidden bg-background transition-colors duration-700 ${themeClass}`}>
+    <main 
+      className={`min-h-[100dvh] relative overflow-hidden bg-background transition-colors duration-700 ${themeClass}`}
+      style={{
+        backgroundImage: `
+          radial-gradient(circle at 0% 0%, var(--theme-accent) 0%, transparent 50%),
+          radial-gradient(circle at 100% 100%, var(--theme-primary) 0%, transparent 50%),
+          radial-gradient(circle at 50% 50%, var(--theme-bg) 0%, transparent 100%)
+        `
+      }}
+    >
       <AtmosphericBackground />
 
       {/* Floating decorative sparkles ✨ */}
@@ -189,34 +198,48 @@ function UniversePage() {
               </div>
 
               {/* Options - Large and animated */}
-              <div className="space-y-3.5">
+              <div className="space-y-4">
                 {options.map((opt, idx) => {
                   const isPicked = selected === opt;
                   const showCorrect = revealed && (q.type === "tf" ? (opt === "Vrai") === q.correct : opt === q.correct);
                   const showWrong = revealed && isPicked && !showCorrect;
+                  
+                  // Colorful defaults
+                  const colors = [
+                    "bg-white/90 border-primary/20",
+                    "bg-white/80 border-primary/10",
+                    "bg-white/70 border-primary/5"
+                  ];
+                  
                   return (
                     <motion.button
                       key={opt}
-                      initial={{ opacity: 0, x: -10 }}
+                      initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.1 + idx * 0.05 }}
-                      whileHover={{ scale: revealed ? 1 : 1.05, y: revealed ? 0 : -5 }}
-                      whileTap={{ scale: revealed ? 1 : 0.95 }}
+                      transition={{ delay: 0.2 + idx * 0.1 }}
+                      whileHover={{ scale: revealed ? 1 : 1.05, y: revealed ? 0 : -4 }}
+                      whileTap={{ scale: revealed ? 1 : 0.96 }}
                       onClick={() => pick(opt)}
                       disabled={revealed}
                       className={[
-                        "w-full text-center rounded-[32px] px-6 py-6 border-2 transition-all duration-500 font-black text-xl shadow-lg",
+                        "w-full text-center rounded-[32px] px-6 py-6 border-2 transition-all duration-500 font-black text-xl shadow-xl",
                         showCorrect
                           ? "bg-success border-success text-success-foreground shadow-glow-primary scale-[1.05]"
                           : showWrong
-                            ? "bg-destructive/20 border-destructive text-destructive opacity-80"
+                            ? "bg-destructive border-destructive text-destructive opacity-80"
                             : isPicked
                               ? "bg-primary border-primary text-primary-foreground shadow-glow-primary"
-                              : "glass text-foreground/90 hover:border-primary hover:shadow-glow-primary",
-                        revealed && !isPicked && !showCorrect ? "opacity-30 grayscale-[0.8] scale-95" : "",
+                              : `${colors[idx % colors.length]} text-foreground/90 hover:border-primary hover:shadow-glow-primary`,
+                        revealed && !isPicked && !showCorrect ? "opacity-20 grayscale scale-95" : "",
                       ].join(" ")}
                     >
-                      {opt}
+                      <motion.span
+                        animate={!revealed ? { y: [0, -2, 0] } : {}}
+                        transition={{ duration: 2, repeat: Infinity, delay: idx * 0.3 }}
+                        className="inline-block"
+                      >
+                        {opt}
+                      </motion.span>
                     </motion.button>
                   );
                 })}
