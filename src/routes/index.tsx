@@ -162,12 +162,15 @@ function Home() {
               <div className="absolute -right-4 top-4 z-30">
                 <div className="relative">
                   <motion.button
-                    whileHover={{ scale: 1.1 }}
+                    whileHover={{ scale: 1.1, rotate: 5 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setShowSultanaInfo(!showSultanaInfo)}
-                    className="flex h-11 w-11 items-center justify-center rounded-full bg-white shadow-glow-primary border-2 border-primary/20 text-primary transition-all hover:bg-primary hover:text-white"
+                    className="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-glow-primary border-2 border-primary/30 text-primary transition-all hover:bg-primary hover:text-white group/btn"
                   >
-                    <Sparkles className="h-5 w-5" />
+                    <div className="relative">
+                      <HelpCircle className="h-6 w-6" />
+                      <Sparkles className="absolute -top-2 -right-2 h-3 w-3 animate-sparkle" />
+                    </div>
                   </motion.button>
                   
                   <AnimatePresence>
@@ -176,38 +179,42 @@ function Home() {
                         initial={{ opacity: 0, scale: 0.8, x: 20, y: -20 }}
                         animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
                         exit={{ opacity: 0, scale: 0.8, x: 20, y: -20 }}
-                        className="absolute right-14 top-0 z-50 w-[280px] sm:w-[320px] glass rounded-[32px] p-6 shadow-2xl border-white/60"
+                        className="absolute right-14 top-0 z-50 w-[290px] sm:w-[340px] bg-white/95 backdrop-blur-sm rounded-[32px] p-7 shadow-2xl border-2 border-primary/10"
                       >
                         <button 
                           onClick={() => setShowSultanaInfo(false)}
-                          className="absolute top-4 right-4 text-foreground/40 hover:text-foreground transition-colors"
+                          className="absolute top-5 right-5 text-foreground/40 hover:text-foreground transition-colors"
                         >
-                          <X className="h-4 w-4" />
+                          <X className="h-5 w-5" />
                         </button>
                         
-                        <div className="space-y-4 text-center">
-                          <div className="flex justify-center gap-1">
-                            <span className="text-primary animate-sparkle">✨</span>
-                            <h3 className="font-display text-xl font-bold text-primary">Qui est Sultana ?</h3>
-                            <span className="text-primary animate-sparkle" style={{ animationDelay: '1s' }}>✨</span>
+                        <div className="space-y-5 text-center">
+                          <div className="flex justify-center items-center gap-2">
+                            <Sparkles className="h-4 w-4 text-primary opacity-40" />
+                            <h3 className="font-display text-2xl font-black text-primary tracking-tight">Qui est Sultana ?</h3>
+                            <Sparkles className="h-4 w-4 text-primary opacity-40" />
                           </div>
                           
-                          <p className="text-foreground/90 leading-relaxed text-sm sm:text-base">
-                            <span className="font-bold text-primary">Sultana, c’est toi.</span><br />
-                            C’est moi. <br />
-                            C’est ta petite sœur, ta meilleure amie, ou peut-être ta future fille.
+                          <div className="space-y-1">
+                            <p className="text-xl font-black text-foreground tracking-tight">
+                              Sultana, <span className="text-primary">c’est toi.</span>
+                            </p>
+                            <p className="text-lg font-bold text-foreground/80">C’est moi.</p>
+                            <p className="text-sm font-medium text-foreground/70 leading-relaxed">
+                              C’est ta petite sœur, ta meilleure amie, ou peut-être ta future fille.
+                            </p>
+                          </div>
+                          
+                          <div className="flex justify-center">
+                            <div className="h-1 w-12 rounded-full bg-gradient-warm opacity-30" />
+                          </div>
+                          
+                          <p className="text-base font-medium text-foreground/80 leading-relaxed italic">
+                            Elle représente toutes les filles qui méritent de <span className="font-black text-primary">connaître leurs droits</span>, de croire en leurs rêves et d’avancer avec <span className="font-black text-primary">confiance</span> vers leur avenir.
                           </p>
                           
-                          <div className="h-px w-12 bg-primary/20 mx-auto" />
-                          
-                          <p className="text-foreground/80 leading-relaxed text-sm sm:text-base italic">
-                            Elle représente toutes les filles qui méritent de <span className="font-semibold text-primary/90">connaître leurs droits</span>, de croire en leurs rêves et d’avancer avec <span className="font-semibold text-primary/90">confiance</span> vers leur avenir.
-                          </p>
-                          
-                          <div className="flex justify-center gap-4 pt-2">
-                            <span className="text-xs opacity-40">✨</span>
-                            <span className="text-xs opacity-40">✨</span>
-                            <span className="text-xs opacity-40">✨</span>
+                          <div className="flex justify-center gap-2 pt-1 opacity-20">
+                            <span>✨</span><span>✨</span><span>✨</span>
                           </div>
                         </div>
                       </motion.div>
