@@ -1,6 +1,6 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, Sparkles, Trophy, X, Compass, Play } from "lucide-react";
+import { ArrowRight, Sparkles, Trophy, X, Compass, Play, HelpCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { SultanaAvatar } from "@/components/sultana/SultanaAvatar";
