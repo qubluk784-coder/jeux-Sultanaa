@@ -31,6 +31,7 @@ const stagePreview = universes.map((universe, index) => ({
 function Home() {
   const [xp, setXp] = useState(0);
   const [selectedUniverse, setSelectedUniverse] = useState<(typeof stagePreview)[0] | null>(null);
+  const [showSultanaInfo, setShowSultanaInfo] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -156,6 +157,64 @@ function Home() {
             </motion.div>
             <div className="relative rounded-[2rem] border border-white/70 bg-white/45 p-5 shadow-soft backdrop-blur">
               <SultanaAvatar size={260} />
+              
+              {/* "Who is Sultana?" Interactive Button */}
+              <div className="absolute -right-4 top-4 z-30">
+                <div className="relative">
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => setShowSultanaInfo(!showSultanaInfo)}
+                    className="flex h-11 w-11 items-center justify-center rounded-full bg-white shadow-glow-primary border-2 border-primary/20 text-primary transition-all hover:bg-primary hover:text-white"
+                  >
+                    <Sparkles className="h-5 w-5" />
+                  </motion.button>
+                  
+                  <AnimatePresence>
+                    {showSultanaInfo && (
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.8, x: 20, y: -20 }}
+                        animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.8, x: 20, y: -20 }}
+                        className="absolute right-14 top-0 z-50 w-[280px] sm:w-[320px] glass rounded-[32px] p-6 shadow-2xl border-white/60"
+                      >
+                        <button 
+                          onClick={() => setShowSultanaInfo(false)}
+                          className="absolute top-4 right-4 text-foreground/40 hover:text-foreground transition-colors"
+                        >
+                          <X className="h-4 w-4" />
+                        </button>
+                        
+                        <div className="space-y-4 text-center">
+                          <div className="flex justify-center gap-1">
+                            <span className="text-primary animate-sparkle">✨</span>
+                            <h3 className="font-display text-xl font-bold text-primary">Qui est Sultana ?</h3>
+                            <span className="text-primary animate-sparkle" style={{ animationDelay: '1s' }}>✨</span>
+                          </div>
+                          
+                          <p className="text-foreground/90 leading-relaxed text-sm sm:text-base">
+                            <span className="font-bold text-primary">Sultana, c’est toi.</span><br />
+                            C’est moi. <br />
+                            C’est ta petite sœur, ta meilleure amie, ou peut-être ta future fille.
+                          </p>
+                          
+                          <div className="h-px w-12 bg-primary/20 mx-auto" />
+                          
+                          <p className="text-foreground/80 leading-relaxed text-sm sm:text-base italic">
+                            Elle représente toutes les filles qui méritent de <span className="font-semibold text-primary/90">connaître leurs droits</span>, de croire en leurs rêves et d’avancer avec <span className="font-semibold text-primary/90">confiance</span> vers leur avenir.
+                          </p>
+                          
+                          <div className="flex justify-center gap-4 pt-2">
+                            <span className="text-xs opacity-40">✨</span>
+                            <span className="text-xs opacity-40">✨</span>
+                            <span className="text-xs opacity-40">✨</span>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </div>
             </div>
           </motion.div>
         </section>
