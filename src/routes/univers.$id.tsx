@@ -92,8 +92,15 @@ function UniversePage() {
   }
 
 
+  const themeClass = {
+    "jardin-secret": "theme-jardin",
+    "forteresse-droits": "theme-forteresse",
+    "academie-reves": "theme-academie",
+    "vigie-securite": "theme-vigie",
+  }[universe.id] || "";
+
   return (
-    <main className={`min-h-[100dvh] relative overflow-hidden theme-${universe.id}`}>
+    <main className={`min-h-[100dvh] relative overflow-hidden bg-background transition-colors duration-700 ${themeClass}`}>
       <AtmosphericBackground />
 
       <XpBurst show={burst.show} amount={burst.amount} />
