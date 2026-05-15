@@ -40,10 +40,18 @@ function Home() {
   }, []);
 
   return (
-    <main className="relative min-h-[100dvh] overflow-hidden text-foreground bg-[#7dd3fc]">
-      {/* Decorative sand bottom */}
-      <div className="absolute inset-x-0 bottom-0 h-[55%] bg-background -z-10" 
-           style={{ borderRadius: '100% 100% 0 0 / 20% 20% 0 0' }} />
+    <main 
+      className="relative min-h-[100dvh] overflow-hidden text-foreground"
+      style={{
+        backgroundColor: 'var(--theme-bg)',
+        backgroundImage: `
+          radial-gradient(circle at 0% 0%, oklch(0.85 0.1 30) 0%, transparent 50%),
+          radial-gradient(circle at 100% 0%, oklch(0.85 0.1 210) 0%, transparent 50%),
+          radial-gradient(circle at 100% 100%, oklch(0.9 0.08 340) 0%, transparent 50%),
+          radial-gradient(circle at 0% 100%, oklch(0.9 0.08 60) 0%, transparent 50%)
+        `
+      }}
+    >
 
       <div className="relative mx-auto flex min-h-[100dvh] w-full max-w-6xl flex-col px-5 py-6 sm:px-8 lg:px-10">
         <motion.header
